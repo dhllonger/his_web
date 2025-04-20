@@ -47,7 +47,13 @@ body,
 
 .el-table {
   margin-top: 10px;
-  font-size: 10px;
+}
+
+.el-table__row {
+  font-size: 12px;
+}
+.el-table__header {
+  font-size: 14px;
 }
 
 

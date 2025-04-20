@@ -1,11 +1,14 @@
 <template>
     <el-container class="home-container">
         <!-- 头部区域 -->
-        <el-header>
-            <div>
-                <!-- <img src="../assets/Nanjing_Medical_University_logo.jpg" alt=""> -->
-                <span>医院电子信息系统</span>
+        <el-header class="header-container">
+            <div class="header-sys-icon">
+                <i class="iconfont icon-HIS"></i>
+                <span class="span-sys-name">医院电子信息系统</span>            
             </div>
+
+            <span class="span-role-name">{{path_map_role[$route.fullPath]}}</span>
+
             <el-button type="info" @click="logout" size=mini>退出</el-button>
         </el-header>
         <!-- 页面主体区域 -->
@@ -15,11 +18,13 @@
                 <div class="toggle-button" @click="toggleCollapse">|||</div>
                 <!-- 侧边栏菜单区域 -->
                 <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF" :unique-opened="false"
-                         :collapse="isCollapse" :collapse-transition="false" router :default-active="activePath">
+                         
+                         :collapse="isCollapse" :collapse-transition="false" router 
+                         :default-active="activePath">
                     
 
-                    <el-menu-item index="/patientInfo" key="view_all">
-                        <i class="el-icon-notebook-1"></i>
+                    <el-menu-item index="patientInfo" key="view_all">
+                        <i class="iconfont icon-huanzheguanli"></i>
                         <span>患者建档信息</span>
                     </el-menu-item>
 
@@ -92,27 +97,21 @@
     export default {
         data() {
             return {
-                // 左侧菜单数据
-                menulist: [],
-                iconsObj: {
-                    '125': 'iconfont icon-user',
-                    '103': 'iconfont icon-tijikongjian',
-                    '101': 'iconfont icon-shangpin',
-                    '102': 'iconfont icon-danju',
-                    '145': 'iconfont icon-baobiao'
-                },
+                
                 // 是否折叠
                 isCollapse: true,
                 // 被激活的链接地址
-                activePath: '',
+                activePath: '/patientInfo',
+                path_map_role: {
+                    '/home': '主页',
+                    '/patientInfo': '患者信息'
+                }
             }
         },
 
-        async created() {
+        created() {
             window.homeV = this
-            
-            // this.getMenuList()
-            // this.activePath = window.sessionStorage.getItem('activePath')
+
         },
         methods: {
             logout() {
@@ -141,7 +140,7 @@
         height: 100%;
     }
 
-    .el-header {
+    .header-container {
         background-color: #333744;
         display: flex;
         justify-content: space-between;
@@ -149,9 +148,26 @@
         align-items: center;
         color: #fff;
         font-size: 20px;
-        height: 30px !important;
+        height: 40px !important;
 
     }
+
+    .header-sys-icon {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-sys-icon .span-sys-name {
+        font-size: 16px;
+        font-family: KaiTi;
+        padding-left: 5px;
+    }
+
+
+    .span-role-name {
+        font-size: 18px;
+    }
+
 
     .el-aside {
         background-color: #333744;
@@ -179,10 +195,18 @@
     }
 
     #body-main {
-        background-color: #ddd !important;
+        background-color: #fff !important;
         padding: 0px;
+        margin: 10px;
     }
     .el-container-class {
         height: calc(100% - 30px);
     }
+
+
+    .el-menu i {
+        font-size: 20px !important;
+    }
+
+
 </style>

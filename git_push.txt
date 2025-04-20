@@ -33,3 +33,34 @@ git config --global http.proxy socks5 127.0.0.1:7890
 git config --global https.proxy socks5 127.0.0.1:7890
 git config --global http.proxy 127.0.0.1:7890
 git config --global https.proxy 127.0.0.1:7890
+
+
+
+
+
+
+# 查看本地仓库绑定的github
+git remote -v
+
+# 查看日志
+git log
+
+
+# 回溯
+git reset --hard[commit id]
+git checkout [commit id]
+
+
+
+# 分支
+# 查看
+git branch 
+
+# 创建
+git checkout -b develop
+
+# 合并
+git commit -m ""
+git checkout main/master
+git merge develop
+

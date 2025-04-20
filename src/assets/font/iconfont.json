@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "31359561",
+      "name": "患者管理",
+      "font_class": "huanzheguanli",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "2181426",
+      "name": "HIS",
+      "font_class": "HIS",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "23259979",
+      "name": "his",
+      "font_class": "his",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
       "icon_id": "4765896",
       "name": "eye",
       "font_class": "eye",
