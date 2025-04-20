@@ -3,23 +3,15 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-<<<<<<< HEAD
 git remote add origin https://github.com/dhllonger/his_web.git
-=======
-git remote add origin https://github.com/dhllonger/his_api.git
->>>>>>> f07ebe9c01ec85ce85a91dbff80c15d5964d73dd
 git push -u origin main
 
-？
 
 
 
 
-<<<<<<< HEAD
+
 git remote add origin https://github.com/dhllonger/his_web.git
-=======
-git remote add origin https://github.com/dhllonger/his_api.git
->>>>>>> f07ebe9c01ec85ce85a91dbff80c15d5964d73dd
 git branch -M main
 git push -u origin main
 
@@ -30,10 +22,5 @@ git push -u origin main
 
 
 git add .
-<<<<<<< HEAD
-git commit -m "er"
+git commit -m "s"
 git push -u origin main
-=======
-git commit -m ""
-git push -u origin master
->>>>>>> f07ebe9c01ec85ce85a91dbff80c15d5964d73dd
