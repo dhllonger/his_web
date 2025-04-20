@@ -26,3 +26,10 @@ git push -u origin main
 git push -u 中的 -u 是 --set-upstream 的缩写，意思是：
 
 将本地分支与远程分支绑定（建立追踪关系），以后你就可以直接用 git push 和 git pull，不用每次都写远程分支名了。
+
+
+# 配置代理
+git config --global http.proxy socks5 127.0.0.1:7890
+git config --global https.proxy socks5 127.0.0.1:7890
+git config --global http.proxy 127.0.0.1:7890
+git config --global https.proxy 127.0.0.1:7890
