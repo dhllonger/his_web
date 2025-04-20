@@ -146,3 +146,4 @@ INSERT INTO hospitaldepartment (officeid, officename, officetype) VALUES
 
 insert into hospitaldepartment(officeid,officename,officetype)values('01','内科','内科'),('02','外科','外科')
 ;
+
