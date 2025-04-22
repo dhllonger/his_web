@@ -27,6 +27,7 @@ instance.interceptors.response.use(
   error => {
     // 判断是否是 401
     if (error.response && error.response.status === 401) {
+      console.log(error)
       // 清除本地 token
       localStorage.removeItem('token')
 
