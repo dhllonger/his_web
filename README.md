@@ -37,7 +37,7 @@ CREATE TABLE `pati_out_visit` (
   `Rtype` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '挂号类型',
   `DpmtnNme` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '科室名称',
   `DoctName` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '医生姓名',
-  `RegistDate` varchar(45) DEFAULT NULL COMMENT '挂号日期',
+  `RegistDate` varchar(45) DEFAULT NULL COMMENT '就诊日期',
   PRIMARY KEY (`Rid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='患者挂号表'
 ;
@@ -54,8 +54,9 @@ CREATE TABLE `pati_info_basic` (
 ;
 
 CREATE TABLE `medicalrecord` (
-  `id` varchar(10) NOT NULL COMMENT '门诊病历号',
-  `patiid` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '就诊卡号',
+  `id` varchar(15) NOT NULL COMMENT '门诊病历号',
+  `Rid` varchar(15) NOT NULL COMMENT '挂号编号',
+  `patiid` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '就诊卡号',
   `patiname` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '患者姓名',
   `medical` varchar(3000) DEFAULT NULL COMMENT '病历内容',
   `Appointmenttime` date DEFAULT NULL COMMENT '就诊时间',

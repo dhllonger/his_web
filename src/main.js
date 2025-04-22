@@ -13,21 +13,9 @@ import './assets/font/iconfont.js'
 import './assets/css/global.css'
 
 
-const instance = axios.create({
-  baseURL: 'http://localhost:5003',
-  withCredentials: true
-})
+import request from './request'
 
-instance.interceptors.request.use(config => {
-  const token = window.sessionStorage.getItem('token')
-  if (token) {
-    config.headers['Authorization'] = 'Bearer ' + token
-  }
-  config.headers['Content-Type'] = 'application/json'
-  return config
-})
-
-Vue.prototype.$http = instance
+Vue.prototype.$http = request
 
 
 Vue.config.productionTip = false
@@ -44,7 +32,7 @@ Vue.config.productionTip = false
 
 
 // 全局函数----------------------------------------------------------------------
-function formatDateTimeToYYYYMMDDHHMMSS() {
+function formatDateTimeToYYMMDDHHMMSS() {
   let currentDateTime = new Date()
 
   // 获取年、月、日
@@ -73,7 +61,7 @@ function formatDateTimeToYYYYMMDDHHMMSS() {
 
   return  formattedDateTime
 }
-window.formatDateTimeToYYYYMMDDHHMMSS = formatDateTimeToYYYYMMDDHHMMSS
+window.formatDateTimeToYYMMDDHHMMSS = formatDateTimeToYYMMDDHHMMSS
 
 
 

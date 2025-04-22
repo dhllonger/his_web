@@ -5,6 +5,7 @@
             class="patient-search-input" 
             placeholder="患者搜索（姓名/身份证/电话）" 
             v-model="patient_search_str"
+            @change="searchByKeyword"
             clearable>
             <el-button
                 @click="searchByKeyword"
@@ -49,7 +50,7 @@
 
             <el-table-column
                 label="操作"
-                width="60">
+                width="90">
                 <template slot-scope="props">
                     <div class="operate-column-container">
                         <i @click="editOrAddPatient('edit',props.row)"
@@ -58,6 +59,10 @@
                         <i @click="deletePatient(props.row)"
                            title="删除"
                            class="el-icon-delete">
+                        </i>
+                        <i @click="pushPatientToOutVisit(props.row)"
+                           title="为此患者挂号"
+                           class="el-icon-first-aid-kit">
                         </i>
                         
                     </div>
@@ -182,7 +187,7 @@ export default {
 
             this.patientInfoCtr.type = type
             if (type === 'edit') {
-                this.patientInfo = row
+                this.patientInfo = row // TODO 编辑的弹框消失后应该展示真实的患者数据
                 this.patientInfoCtr.title = "编辑患者信息"
                 this.patientInfoCtr.dialogVisible = true
             
@@ -190,7 +195,7 @@ export default {
                 this.patientInfoCtr.title = "新增患者信息"
                 this.patientInfoCtr.dialogVisible = true
                 this.patientInfo = {
-                    pid: formatDateTimeToYYYYMMDDHHMMSS(),
+                    pid: formatDateTimeToYYMMDDHHMMSS(),
                     pname: '',
                     pgender: '男',
                     pbirthday: '1990-01-01',
@@ -226,6 +231,12 @@ export default {
                 }
             }
         },
+
+
+        pushPatientToOutVisit(row) {
+
+        },
+
 
         // 分页操作后重新刷新Table
         handleSizeChange(page_size){
