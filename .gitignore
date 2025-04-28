@@ -2,11 +2,8 @@
 node_modules
 /dist
 
-<<<<<<< HEAD
 git_push.txt
 HIS课件
-=======
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 
 # local env files
 .env.local

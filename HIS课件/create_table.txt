@@ -1,0 +1,61 @@
+CREATE TABLE `pati_out_visit` (
+  `Rid` varchar(15) NOT NULL COMMENT '挂号编码',
+  `Pid` varchar(20) DEFAULT NULL COMMENT '病人编号',
+  `Rtype` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '挂号类型',
+  `DpmtnNme` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '科室名称',
+  `DoctName` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '医生姓名',
+  `RegistDate` varchar(45) DEFAULT NULL COMMENT '挂号日期',
+  PRIMARY KEY (`Rid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='患者挂号表'
+;
+
+CREATE TABLE `pati_info_basic` (
+  `Pid` varchar(15) NOT NULL COMMENT '病人编号',
+  `Pname` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '姓名',
+  `Pgender` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '性别',
+  `Pidcard` varchar(45) DEFAULT NULL COMMENT '身份证',
+  `Pbirthday` date DEFAULT NULL COMMENT '出生日期',
+  `Ptel` varchar(45) DEFAULT NULL COMMENT '电话',
+  PRIMARY KEY (`Pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='患者信息表'
+;
+
+CREATE TABLE `medicalrecord` (
+  `id` varchar(10) NOT NULL COMMENT '门诊病历号',
+  `patiid` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '就诊卡号',
+  `patiname` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '患者姓名',
+  `medical` varchar(3000) DEFAULT NULL COMMENT '病历内容',
+  `Appointmenttime` date DEFAULT NULL COMMENT '就诊时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='患者病历表'
+;
+
+CREATE TABLE `hospitaldepartment` (
+  `officeid` varchar(10) NOT NULL,
+  `officename` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `officetype` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`officeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+
+;
+
+
+
+CREATE TABLE `doctororder` (
+  `orderid` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'CHANGE COLUMN `orderid` `orderid` INT UNSIGNED AUTO_INCREMENT;',
+  `ordername` varchar(80) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '门诊医嘱名称',
+  `ordertype` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '门诊医嘱类型',
+  `prescriptiontime` date DEFAULT NULL COMMENT '医嘱开立时间',
+  `orderprice` float DEFAULT NULL COMMENT '单价',
+  `ispaid` tinyint DEFAULT NULL COMMENT '是否付费',
+  `drugSpecifications` varchar(45) DEFAULT NULL COMMENT '药品规格',
+  `orderallprice` float DEFAULT NULL COMMENT '总价',
+  `takeMedicine` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '给药途径',
+  `Frequency` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '频次',
+  `TotalOrder` int DEFAULT NULL COMMENT '总量',
+  `patiid` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '患者就诊卡号',
+  PRIMARY KEY (`orderid`),
+  UNIQUE KEY `orderid_UNIQUE` (`orderid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COMMENT='门诊医嘱表'
+
