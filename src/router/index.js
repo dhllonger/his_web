@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home.vue'
 import Login from '../components/Login.vue'
+<<<<<<< HEAD
 import PatientBaseInfo from '../components/PatientBaseInfo.vue'
+=======
+>>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 // import { component } from 'vue/types/umd'
 
 Vue.use(Router)
@@ -14,7 +17,11 @@ const routes = [
     name: 'Home',
     component: Home,
     children: [
+<<<<<<< HEAD
       {path: '/patientInfo',component: PatientBaseInfo}
+=======
+      
+>>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
     ]
   },
   {

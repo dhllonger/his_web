@@ -6,6 +6,7 @@
   "description": "",
   "glyphs": [
     {
+<<<<<<< HEAD
       "icon_id": "31359561",
       "name": "患者管理",
       "font_class": "huanzheguanli",
@@ -27,6 +28,8 @@
       "unicode_decimal": 58976
     },
     {
+=======
+>>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
       "icon_id": "4765896",
       "name": "eye",
       "font_class": "eye",

@@ -13,13 +13,32 @@ import './assets/font/iconfont.js'
 import './assets/css/global.css'
 
 
+<<<<<<< HEAD
 import request from './request'
 
 Vue.prototype.$http = request
+=======
+const instance = axios.create({
+  baseURL: 'http://localhost:5003',
+  withCredentials: true
+})
+
+instance.interceptors.request.use(config => {
+  const token = window.sessionStorage.getItem('token')
+  if (token) {
+    config.headers['Authorization'] = 'Bearer ' + token
+  }
+  config.headers['Content-Type'] = 'application/json'
+  return config
+})
+
+Vue.prototype.$http = instance
+>>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 
 
 Vue.config.productionTip = false
 
+<<<<<<< HEAD
 
 
 
@@ -80,6 +99,8 @@ window.formatDateTimeToYYMMDDHHMMSS = formatDateTimeToYYMMDDHHMMSS
 
 
 
+=======
+>>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 new Vue({
   router,
   store,

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+<<<<<<< HEAD
 import request from '../request'
 
 Vue.use(Vuex)
@@ -42,3 +43,18 @@ export default new Vuex.Store({
   }     // 模块化管理子 store
 })
 
+=======
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+  }
+})
+>>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
