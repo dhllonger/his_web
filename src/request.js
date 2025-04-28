@@ -19,6 +19,7 @@ instance.interceptors.request.use(config => {
 
 // 响应拦截器
 // TODO 处理Token失效，重新登录
+import router from './router'
 instance.interceptors.response.use(
   response => {
     // 正常响应直接返回
@@ -27,7 +28,6 @@ instance.interceptors.response.use(
   error => {
     // 判断是否是 401
     if (error.response && error.response.status === 401) {
-      console.log(error)
       // 清除本地 token
       localStorage.removeItem('token')
 
@@ -35,7 +35,7 @@ instance.interceptors.response.use(
       alert('登录已失效，请重新登录')
 
       // 跳转到登录页
-      router.push({ name: 'Login' })
+      router.push({ path: '/Login' })
 
       // 或者返回一个 reject 错误
       return Promise.reject(error)

@@ -47,7 +47,6 @@ body,
 
 .el-table {
   margin-top: 10px;
-<<<<<<< HEAD
 }
 
 .el-table__row {
@@ -55,9 +54,6 @@ body,
 }
 .el-table__header {
   font-size: 14px;
-=======
-  font-size: 10px;
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 }
 
 

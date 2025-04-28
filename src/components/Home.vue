@@ -1,7 +1,6 @@
 <template>
     <el-container class="home-container">
         <!-- 头部区域 -->
-<<<<<<< HEAD
         <el-header class="header-container">
             <div class="header-sys-icon">
                 <i class="iconfont icon-HIS"></i>
@@ -10,13 +9,6 @@
 
             <span class="span-role-name">{{path_map_role[$route.fullPath]}}</span>
 
-=======
-        <el-header>
-            <div>
-                <!-- <img src="../assets/Nanjing_Medical_University_logo.jpg" alt=""> -->
-                <span>医院电子信息系统</span>
-            </div>
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
             <el-button type="info" @click="logout" size=mini>退出</el-button>
         </el-header>
         <!-- 页面主体区域 -->
@@ -26,21 +18,13 @@
                 <div class="toggle-button" @click="toggleCollapse">|||</div>
                 <!-- 侧边栏菜单区域 -->
                 <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF" :unique-opened="false"
-<<<<<<< HEAD
                          
                          :collapse="isCollapse" :collapse-transition="false" router 
                          :default-active="activePath">
                     
 
-                    <el-menu-item index="patientInfo" key="view_all">
-                        <i class="iconfont icon-huanzheguanli"></i>
-=======
-                         :collapse="isCollapse" :collapse-transition="false" router :default-active="activePath">
-                    
-
                     <el-menu-item index="/patientInfo" key="view_all">
-                        <i class="el-icon-notebook-1"></i>
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
+                        <i class="iconfont icon-huanzheguanli"></i>
                         <span>患者建档信息</span>
                     </el-menu-item>
 
@@ -113,7 +97,6 @@
     export default {
         data() {
             return {
-<<<<<<< HEAD
                 
                 // 是否折叠
                 isCollapse: true,
@@ -128,32 +111,11 @@
 
         created() {
             window.homeV = this
+            this.getDepartmentTreeData()
 
-=======
-                // 左侧菜单数据
-                menulist: [],
-                iconsObj: {
-                    '125': 'iconfont icon-user',
-                    '103': 'iconfont icon-tijikongjian',
-                    '101': 'iconfont icon-shangpin',
-                    '102': 'iconfont icon-danju',
-                    '145': 'iconfont icon-baobiao'
-                },
-                // 是否折叠
-                isCollapse: true,
-                // 被激活的链接地址
-                activePath: '',
-            }
-        },
-
-        async created() {
-            window.homeV = this
-            
-            // this.getMenuList()
-            // this.activePath = window.sessionStorage.getItem('activePath')
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
         },
         methods: {
+            ...mapActions(['getDepartmentTreeData']),
             logout() {
                 window.sessionStorage.clear()
                 this.$router.push('/login')
@@ -169,6 +131,9 @@
                 this.activePath = activePath
             }
         },
+        computed: {
+            ...mapState(['departmentTreeData']),
+        },
         watch: {
             
         }
@@ -180,11 +145,7 @@
         height: 100%;
     }
 
-<<<<<<< HEAD
     .header-container {
-=======
-    .el-header {
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
         background-color: #333744;
         display: flex;
         justify-content: space-between;
@@ -192,7 +153,6 @@
         align-items: center;
         color: #fff;
         font-size: 20px;
-<<<<<<< HEAD
         height: 40px !important;
 
     }
@@ -214,12 +174,6 @@
     }
 
 
-=======
-        height: 30px !important;
-
-    }
-
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
     .el-aside {
         background-color: #333744;
     }
@@ -246,19 +200,13 @@
     }
 
     #body-main {
-<<<<<<< HEAD
         background-color: #fff !important;
         padding: 0px;
         margin: 10px;
-=======
-        background-color: #ddd !important;
-        padding: 0px;
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
     }
     .el-container-class {
         height: calc(100% - 30px);
     }
-<<<<<<< HEAD
 
 
     .el-menu i {
@@ -266,6 +214,4 @@
     }
 
 
-=======
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 </style>

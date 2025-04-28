@@ -127,11 +127,26 @@
         </span>
     </el-dialog>
 
+
+    <!-- TODO key的作用 -->
+    <el-dialog title="患者挂号" :visible.sync="patiToVist.dialogVisible" width="70%" >
+        <pati-visit 
+            :key="patiToVist.pid" 
+            :pid="patiToVist.pid" :pname="patiToVist.pname" @visit_res="handleVisitClose"/>
+
+        
+    </el-dialog>
+
+
   </div>
 </template>
 
 <script>
+import PushPatiVisit from '@/components/PushPatiVisit.vue'
 export default {
+    components: {
+        'pati-visit': PushPatiVisit
+    },
     data() {
         return {
             patient_search_str: '',
@@ -160,6 +175,13 @@ export default {
                 current_page:1
             },
 
+
+            // 挂号
+            patiToVist: {
+                pid: '',
+                pname: '',
+                dialogVisible: false
+            }
         }
     },
 
@@ -234,7 +256,10 @@ export default {
 
 
         pushPatientToOutVisit(row) {
-
+            console.log(row)
+            this.patiToVist.pid = row.pid
+            this.patiToVist.pname = row.pname
+            this.patiToVist.dialogVisible = true
         },
 
 
@@ -247,6 +272,10 @@ export default {
             this.page_ctr.current_page = current_page
             this.patientBaseInfosShow = this.patientBaseInfos.slice((this.page_ctr.current_page-1)*this.page_ctr.page_size,this.page_ctr.current_page*this.page_ctr.page_size)
         },
+        handleVisitClose() {
+            this.patiToVist.dialogVisible=false
+            console.log('close')
+        }
     }
 }
 </script>

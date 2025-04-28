@@ -1,14 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3336694 */
-<<<<<<< HEAD
   src: url('iconfont.woff2?t=1745151830761') format('woff2'),
        url('iconfont.woff?t=1745151830761') format('woff'),
        url('iconfont.ttf?t=1745151830761') format('truetype');
-=======
-  src: url('iconfont.woff2?t=1744967092011') format('woff2'),
-       url('iconfont.woff?t=1744967092011') format('woff'),
-       url('iconfont.ttf?t=1744967092011') format('truetype');
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 }
 
 .iconfont {
@@ -19,7 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< HEAD
 .icon-huanzheguanli:before {
   content: "\e630";
 }
@@ -32,8 +25,6 @@
   content: "\e660";
 }
 
-=======
->>>>>>> b65eb77edd33d23bbfd25f1254602c5f3e470f98
 .icon-eye:before {
   content: "\e78f";
 }
