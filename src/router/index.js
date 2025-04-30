@@ -4,6 +4,7 @@ import Home from '../components/Home.vue'
 import Login from '../components/Login.vue'
 import PatientBaseInfo from '../components/PatientBaseInfo.vue'
 import PushPatiVisit from '../components/PushPatiVisit.vue'
+import MedicalRecord from '../components/MedicalRecord.vue'
 // import { component } from 'vue/types/umd'
 
 Vue.use(Router)
@@ -17,6 +18,7 @@ const routes = [
     children: [
       {path: '/patientInfo',component: PatientBaseInfo},
       {path: '/visit/:pid',component: PushPatiVisit},
+      {path: '/medicalRecord',component: MedicalRecord}
     ]
   },
   {

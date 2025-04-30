@@ -8,8 +8,13 @@
             </div>
 
             <span class="span-role-name">{{path_map_role[$route.fullPath]}}</span>
-
-            <el-button type="info" @click="logout" size=mini>退出</el-button>
+            <div style="display:flex;">
+                <el-button size="small" class="user-info-but"   type="warning" >
+                    <i class="iconfont icon-yisheng2"/>
+                    <span>{{userInfo.userName}}</span>
+                    </el-button>
+                <el-button type="info" @click="logout" size=mini>退出</el-button>
+            </div>
         </el-header>
         <!-- 页面主体区域 -->
         <el-container class="el-container-class">
@@ -31,52 +36,33 @@
 
                     <el-submenu index="" :key="777">
                         <template slot="title">
-                            <i class="el-icon-grape"></i>
-                            <span>数据源</span>
+                            <i class="iconfont icon-qingbingliguanli"></i>
+                            <span>患者就诊</span>
                         </template>
 
-                        <el-menu-item index="/dbclass" :key="779">
+                        <el-menu-item index="/medicalRecord" :key="779">
                             <template slot="title">
-                                <i class="iconfont icon-peizhishujuyuan"></i>
-                                <span>数据库配置</span>
+                                <i class="iconfont icon-jiuyijiuzhen"></i>
+                                <span>诊断与病历</span>
                             </template>
                         </el-menu-item>
 
-                        <el-menu-item index="/test" :key="780">
+                        <el-menu-item index="/medicalOrder" :key="780">
                             <template slot="title">
-                                <i class="el-icon-menu"></i>
-                                <span>测试</span>
+                                <i class="iconfont icon-yizhufenxi"></i>
+                                <span>医嘱</span>
                             </template>
                         </el-menu-item>
 
                     </el-submenu>
 
-                    <el-menu-item index="/flowIndex" :key="778">
-                        <i class="iconfont icon-node_multiple" style="padding-left:5px;"></i>
-                        <span>graph</span>
+                    <el-menu-item index="/medicalBill" :key="778">
+                        <i class="iconfont icon-jiesuan" ></i>
+                        <span>结算</span>
                     </el-menu-item>
 
 
-                    <el-submenu index="888" :key="888">
-                        <template slot="title">
-                            <i class="el-icon-sort"></i>
-                            <span>电子病历</span>
-                        </template>
-                        <el-menu-item index="/etlview" :key="778">
-                            <template slot="title">
-                                <i class="el-icon-menu"></i>
-                                <span>表抽取任务</span>
-                            </template>
-                        </el-menu-item>
-
-                        <el-menu-item index="/dqpsql" :key="775">
-                            <template slot="title">
-                                <i class="el-icon-menu"></i>
-                                <span>数据质量</span>
-                            </template>
-                        </el-menu-item>
-
-                    </el-submenu>
+                    
 
                 </el-menu>
             </el-aside>
@@ -104,7 +90,8 @@
                 activePath: '/patientInfo',
                 path_map_role: {
                     '/home': '主页',
-                    '/patientInfo': '患者信息'
+                    '/patientInfo': '患者信息',
+                    '/medicalRecord': '诊断与病历'
                 }
             }
         },
@@ -132,7 +119,7 @@
             }
         },
         computed: {
-            ...mapState(['departmentTreeData']),
+            ...mapState(['departmentTreeData','userInfo']),
         },
         watch: {
             
@@ -209,9 +196,18 @@
     }
 
 
-    .el-menu i {
-        font-size: 20px !important;
+    .el-menu .iconfont {
+        font-size: 20px;
+        padding-right: 4px;
     }
 
+    .icon-qingbingliguanli {
+        font-size: 26px !important;
+    }
 
+    .icon-jiuyijiuzhen {
+        font-size: 23px !important;
+    }
+
+    
 </style>
