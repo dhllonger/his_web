@@ -85,7 +85,7 @@
         <el-button type="primary" @click="onSaveMedicalContent" :disabled="patient_edit_index===-1 || Boolean(docId)">提交</el-button>
     </el-form-item>
   
-  </el-form>
+</el-form>
 
 
 </div>
