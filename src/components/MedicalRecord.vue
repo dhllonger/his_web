@@ -1,9 +1,9 @@
 <template>
-<div id="patient-out-visit">
+<div class="patient-out-visit">
 
 <div class="list-container-112">
     <h2 class="list-title">
-        患者列表 ({{ patients.length }})
+        患者列表 ({{ patients.length }}) <i class="el-icon-refresh" @click="getPatiToVist" />
     </h2>
     <ul class="custom-list-112 custom-list-113">
         <li
@@ -212,7 +212,7 @@ export default {
 </script>
 
 <style scoped>
-#patient-out-visit {
+.patient-out-visit {
     width: 870px;
     display: flex;
     justify-content: space-between;
@@ -241,6 +241,11 @@ export default {
     color: #333;
     text-align: center;
     font-size: 13px;
+}
+
+.list-title i {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .custom-list-112 {

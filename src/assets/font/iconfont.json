@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4397544",
+      "name": "付款",
+      "font_class": "fukuan",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "35700886",
+      "name": "付款 (5)",
+      "font_class": "a-fukuan5",
+      "unicode": "eb70",
+      "unicode_decimal": 60272
+    },
+    {
+      "icon_id": "7090049",
+      "name": "结算",
+      "font_class": "jiesuan1",
+      "unicode": "e70f",
+      "unicode_decimal": 59151
+    },
+    {
       "icon_id": "3312873",
       "name": "医生",
       "font_class": "yisheng",

@@ -16,13 +16,16 @@
     </el-form-item>
 
     <el-form-item label="挂号类型">
-        <span> {{visitInfo.rtype}} </span>
+        <el-select v-model="visitInfo.rtype" @change="onVisitTypeChange">
+            <el-option label="普通" value="普通"></el-option>
+            <el-option label="专家" value="专家"></el-option>
+        </el-select>
     </el-form-item>
 
     <el-form-item label="医生姓名">
         <el-select v-model="visitInfo.doctName" >
             <el-option 
-                v-for="item in doctorNames" 
+                v-for="item in doctorNames_filtered" 
                 :key = "item.userId"
                 :label="item.userName" 
                 :value="item.userName"></el-option>
@@ -71,6 +74,7 @@ export default {
     data() {
         return {
             doctorNames: [],
+            doctorNames_filtered: [],
             depart_code: [],
             visitInfo: {
                 rid: '',
@@ -95,7 +99,7 @@ export default {
             if (code_len>1) {
                 
                 this.visitInfo.dpmtnNme = this.departmentCodeMap.get(node[code_len-1])
-                this.visitInfo.rtype = this.departmentCodeMap.get(node[0])
+                // this.visitInfo.rtype = this.departmentCodeMap.get(node[0])
 
             }
         },
@@ -103,6 +107,10 @@ export default {
         async getAllDoctor() {
             const {data: res} = await this.$http.get('/user/all')
             this.doctorNames = res.data
+        },
+
+        onVisitTypeChange(){
+            this.doctorNames_filtered = _.filter(this.doctorNames,d=>{return d.docType===this.visitInfo.rtype})
         },
 
         // 挂号接口

@@ -77,11 +77,59 @@ CREATE TABLE `hospitaldepartment` (
 
 ;
 
+CREATE TABLE `doctororder_dict` (
+  `ordid` VARCHAR(20) NOT NULL COMMENT '医嘱项主键ID（字符串）',
+  `ordername` VARCHAR(100) NOT NULL COMMENT '医嘱名称',
+  `ordertype` VARCHAR(50) NOT NULL COMMENT '医嘱类型（药品/检查/治疗等）',
+  `inputstr` VARCHAR(50) NOT NULL COMMENT '医嘱名称首字母（中文首字母大写）',
+  `drugSpecifications` VARCHAR(100) DEFAULT NULL COMMENT '药品规格',
+  `takeMedicine` VARCHAR(50) DEFAULT NULL COMMENT '给药途径',
+  `Frequency` VARCHAR(50) DEFAULT NULL COMMENT '频次',
+  `price` FLOAT DEFAULT NULL COMMENT '单价',
+  PRIMARY KEY (`ordid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='医嘱字典表';
+
+-- 药品类
+INSERT INTO doctororder_dict (ordid, ordername, ordertype, inputstr, drugSpecifications, takeMedicine, Frequency, price) VALUES
+('ORD006', '左氧氟沙星片', '药品', 'ZYFSXP', '0.1g*10片/盒', '口服', '每日一次', 3.2),
+('ORD007', '氯化钠注射液', '药品', 'LHNZSY', '500ml/瓶', '静脉滴注', '一次', 5.0),
+('ORD008', '葡萄糖注射液', '药品', 'PTTZSY', '250ml/瓶', '静脉滴注', '一次', 4.5),
+('ORD009', '复方甘草片', '药品', 'FFGCP', '100片/瓶', '口服', '每日三次', 1.8),
+('ORD010', '维生素C片', '药品', 'WSSC P', '100mg*100片/瓶', '口服', '每日一次', 2.0);
+
+-- 检查类
+INSERT INTO doctororder_dict (ordid, ordername, ordertype, inputstr, drugSpecifications, takeMedicine, Frequency, price) VALUES
+('ORD011', '腹部彩超', '检查', 'FBCC', NULL, NULL, NULL, 200.0),
+('ORD012', '血常规检查', '检查', 'XCGJC', NULL, NULL, NULL, 50.0),
+('ORD013', '尿常规检查', '检查', 'NCGJC', NULL, NULL, NULL, 30.0),
+('ORD014', '心电图检查', '检查', 'XDTJC', NULL, NULL, NULL, 100.0),
+('ORD015', '核磁共振检查', '检查', 'HCGZJC', NULL, NULL, NULL, 800.0);
+
+-- 治疗类
+INSERT INTO doctororder_dict (ordid, ordername, ordertype, inputstr, drugSpecifications, takeMedicine, Frequency, price) VALUES
+('ORD016', '针灸治疗', '治疗', 'ZJZL', NULL, NULL, '每日一次', 60.0),
+('ORD017', '推拿治疗', '治疗', 'TNZL', NULL, NULL, '每日一次', 70.0),
+('ORD018', '超声波理疗', '治疗', 'CSBLL', NULL, NULL, '隔日一次', 80.0),
+('ORD019', '中药熏蒸', '治疗', 'ZYXZ', NULL, NULL, '每日一次', 90.0),
+('ORD020', '高压氧治疗', '治疗', 'GYYZL', NULL, NULL, '每日一次', 150.0);
+
+
+-- 检验类
+INSERT INTO doctororder_dict (ordid, ordername, ordertype, inputstr, drugSpecifications, takeMedicine, Frequency, price) VALUES
+('ORD021', '血常规', '检验', 'XCG', NULL, NULL, NULL, 40.0),
+('ORD022', '肝功能检查', '检验', 'GGNJC', NULL, NULL, NULL, 55.0),
+('ORD023', '肾功能检查', '检验', 'SGNJC', NULL, NULL, NULL, 60.0),
+('ORD024', '肿瘤标志物', '检验', 'ZMBZW', NULL, NULL, NULL, 200.0),
+('ORD025', '甲状腺功能', '检验', 'JZXGN', NULL, NULL, NULL, 75.0);
+
+
+
 CREATE TABLE `doctororder` (
   `orderid` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'CHANGE COLUMN `orderid` `orderid` INT UNSIGNED AUTO_INCREMENT;',
+  `Rid` varchar(15) NOT NULL COMMENT '挂号编号',
   `ordername` varchar(80) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '门诊医嘱名称',
   `ordertype` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '门诊医嘱类型',
-  `prescriptiontime` date DEFAULT NULL COMMENT '医嘱开立时间',
+  `prescriptiontime` datetime DEFAULT NULL COMMENT '医嘱开立时间',
   `orderprice` float DEFAULT NULL COMMENT '单价',
   `ispaid` tinyint DEFAULT NULL COMMENT '是否付费',
   `drugSpecifications` varchar(45) DEFAULT NULL COMMENT '药品规格',
