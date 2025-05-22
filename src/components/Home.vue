@@ -91,7 +91,8 @@
                 path_map_role: {
                     '/home': '主页',
                     '/patientInfo': '患者信息',
-                    '/medicalRecord': '诊断与病历'
+                    '/medicalRecord': '诊断与病历',
+                    '/medicalOrder': '医嘱开立与缴费'
                 }
             }
         },

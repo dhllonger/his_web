@@ -16,8 +16,7 @@
                     patient_edit_index === index,
             }"
         >
-            <span 
-            >{{ item.pname }}</span>
+            <span>{{ item.pname }}</span>
             
 
         </li>
@@ -125,13 +124,89 @@
 </el-dialog>
 
 
+
+<el-dialog :visible.sync="orderToPayCtr.visible" width="70%">
+    <!-- 患者就诊信息 -->
+    <el-descriptions title="患者就诊信息">
+        <el-descriptions-item label="姓名">{{orderToPayCtr.patientVisitInfo.pname}}</el-descriptions-item>
+        <el-descriptions-item label="身份证">{{orderToPayCtr.patientVisitInfo.pidcard}}</el-descriptions-item>
+        <el-descriptions-item label="挂号医生">{{orderToPayCtr.patientVisitInfo.doctName}}</el-descriptions-item>
+        <el-descriptions-item label="挂号类别">
+            <el-tag size="small">{{orderToPayCtr.patientVisitInfo.rtype}}</el-tag>
+        </el-descriptions-item>
+        <el-descriptions-item label="挂号科室">{{orderToPayCtr.patientVisitInfo.dpmtnNme}}</el-descriptions-item>
+    </el-descriptions>
+    <el-divider><i class="iconfont icon-yiguahaoliebiao_24"></i> 待缴费医嘱</el-divider>
+
+    <div class="order-pay-table-container">
+        <div class="order-pay-table">
+            <el-table
+            :data="orderToPayCtr.orderToPayDataTable"
+            show-summary
+            @select="onPayOrderSelect"
+        >
+            <el-table-column
+                type="selection"
+                width="55">
+            </el-table-column>
+
+            <el-table-column
+                label="医嘱名"
+                prop="ordername"
+                width="130"
+            ></el-table-column>
+
+            <el-table-column
+                label="医嘱类型"
+                prop="ordertype"
+                width="90"
+            ></el-table-column>
+
+            <el-table-column
+                label="单价"
+                prop="orderprice"
+                width="60"
+            ></el-table-column>
+
+            <el-table-column
+                label="数量"
+                prop="totalOrder"
+                width="60"
+            ></el-table-column>
+
+            <el-table-column
+                label="总计"
+                prop="orderallprice"
+                width="80"
+            ></el-table-column>
+
+            
+
+        </el-table>
+        </div>
+        
+        <div class="qrcode-container">
+            <qrcode-vue :value="orderToPayCtr.payUrl"  :size="160" />
+            <span>{{orderToPayCtr.underQrcodeText}}</span>
+        </div>
+
+    </div>
+
+
+</el-dialog>
+
+
 </div>
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue';
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
+    components: {
+        'qrcode-vue':QrcodeVue
+    },
     data() {
         return {
             // 患者信息列表
@@ -173,7 +248,7 @@ export default {
                 orderprice: { desc: '单价', width: 60 },
                 totalOrder: { desc: '总量', width: 60 },
                 orderallprice: { desc: '总价', width: 80 },
-                // ispaid: { desc: '是否付费', width: 100 },
+                ispaid: { desc: '是否付费', width: 100 },
                 drugSpecifications: { desc: '药品规格', width: 150 },
                 takeMedicine: { desc: '给药途径', width: 150 },
                 frequency: { desc: '频次', width: 100 },
@@ -187,6 +262,19 @@ export default {
                 page_size:10,
                 current_page:1
             },
+
+            // 医嘱缴费弹出控制
+            orderToPayCtr: {
+                visible: false,
+                patientVisitInfo: {
+
+                },
+                orderToPayDataTable: [],
+                selectedOrder: [],
+                totalTOPay: 0,
+                payUrl: 'https://baidu.com',
+                underQrcodeText: ''
+            }
 
         }
     },
@@ -318,7 +406,23 @@ export default {
 
 
         // 收费
-        toOrderPay(){},
+        toOrderPay(){
+            const patiInfo = this.patients[this.patient_edit_index]
+            this.orderToPayCtr.patientVisitInfo = patiInfo
+
+            this.orderToPayCtr.orderToPayDataTable = _.filter(this.doctorOrders,o=>{return !o.ispaid})
+
+            this.orderToPayCtr.visible = true
+        },
+
+        // 付费选项改变
+        onPayOrderSelect(orderRows) {
+            console.log(orderRows)
+            this.orderToPayCtr.selectedOrder=_.map(orderRows,'orderid')
+            this.orderToPayCtr.totalTOPay = _.map(orderRows,'orderallprice').reduce((acc, cur) => acc + cur, 0);
+            this.orderToPayCtr.underQrcodeText = '需要支付医嘱 '+orderRows.length+'/'+this.orderToPayCtr.orderToPayDataTable.length+' 总计：'+ this.orderToPayCtr.totalTOPay+'元'
+            this.orderToPayCtr.payUrl = 'http://172.18.64.140:8080/#/outbillpay?rid='+this.orderToPayCtr.patientVisitInfo.rid+'&selectedOrders='+this.orderToPayCtr.selectedOrder.join(',')
+        },
         
     },
     computed: {
@@ -434,8 +538,7 @@ ul::-webkit-scrollbar {
     width: 400px;
 }
 .total-order-price {
-    width: 160px;
-    
+    width: 180px;
 }
 
 .order-pay {
@@ -443,4 +546,17 @@ ul::-webkit-scrollbar {
     padding: 8px;
     cursor: pointer;
 }
+
+.order-pay-table {
+    width: 480px;
+}
+
+.order-pay-table-container {
+    display: flex;
+    /* justify-content: space-around; */
+}
+.qrcode-container {
+    padding-left: 50px;
+}
+
 </style>

@@ -54,7 +54,8 @@ import {
   DescriptionsItem,
   Badge,
   Popover,
-  Autocomplete
+  Autocomplete,
+  Divider
 } from 'element-ui'
 
 // import Timeline from './timeline/index.js'
@@ -116,6 +117,7 @@ Vue.use(DescriptionsItem)
 Vue.use(Badge)
 Vue.use(Popover)
 Vue.use(Autocomplete)
+Vue.use(Divider)
 
 
 Vue.prototype.$message = Message

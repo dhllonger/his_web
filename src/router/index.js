@@ -6,12 +6,14 @@ import PatientBaseInfo from '../components/PatientBaseInfo.vue'
 import PushPatiVisit from '../components/PushPatiVisit.vue'
 import MedicalRecord from '../components/MedicalRecord.vue'
 import MedicalOrder from '../components/MedicalOrder.vue'
+import OutBillPay from '../components/OutBillPay.vue'
 // import { component } from 'vue/types/umd'
 
 Vue.use(Router)
 
 const routes = [
-  { path:'/',component: Login},
+  { path:'/',component: Login },
+  { path:'/outbillpay', component: OutBillPay},
   { path:'/login',component: Login},
   {
     path: '/home',

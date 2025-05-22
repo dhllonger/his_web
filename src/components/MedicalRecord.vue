@@ -82,7 +82,8 @@
                 :label=item.icdname
                 :value=item.icd></el-option>
         </el-select>
-        <el-button type="primary" @click="onSaveMedicalContent" :disabled="patient_edit_index===-1 || Boolean(docId)">提交</el-button>
+        <el-button type="primary" @click="onSaveMedicalContent" v-if="!Boolean(docId)" :disabled="patient_edit_index===-1">提交</el-button>
+        <el-button type="primary" v-if="Boolean(docId)" disabled>已提交</el-button>
     </el-form-item>
   
 </el-form>
@@ -198,7 +199,8 @@ export default {
 
             const {data:res} = await this.$http.post('/medicalrecord',this.medicalContent)
             if(res.code===200){
-                this.$message.success('病历保存成功')
+                this.docId = res.data.docId
+                this.$message.success('病历保存成功!')
             }else{
                 this.$message.error(res.message)
             }
