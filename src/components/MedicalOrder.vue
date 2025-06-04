@@ -523,6 +523,8 @@ ul::-webkit-scrollbar {
     width: 900px;
     padding-left: 10px;
 }
+
+
 /* 患者医嘱表 */
 .order-box .data-table-show {
     height: 300px;
