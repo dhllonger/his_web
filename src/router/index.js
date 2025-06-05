@@ -7,6 +7,7 @@ import PushPatiVisit from '../components/PushPatiVisit.vue'
 import MedicalRecord from '../components/MedicalRecord.vue'
 import MedicalOrder from '../components/MedicalOrder.vue'
 import OutBillPay from '../components/OutBillPay.vue'
+import DataView from '../components/DataView.vue'
 // import { component } from 'vue/types/umd'
 
 Vue.use(Router)
@@ -25,6 +26,7 @@ const routes = [
       {path: '/medicalRecord',component: MedicalRecord},
       {path: '/MedicalOrder',component: MedicalOrder},
       {path: '/MedicalOrder/:pid',component: MedicalOrder},
+      {path: '/overview',component: DataView},
     ]
   },
   {
