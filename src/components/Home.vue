@@ -58,6 +58,13 @@
                             </template>
                         </el-menu-item>
 
+                        <el-menu-item index="/labCheck" :key="781">
+                            <template slot="title">
+                                <i class="el-icon-document-checked"></i>
+                                <span>检验申请</span>
+                            </template>
+                        </el-menu-item>
+
                     </el-submenu>
 
                     <el-menu-item index="/medicalBill" :key="778">
@@ -97,7 +104,8 @@
                     '/home': '主页',
                     '/patientInfo': '患者信息',
                     '/medicalRecord': '诊断与病历',
-                    '/medicalOrder': '医嘱开立与缴费'
+                    '/medicalOrder': '医嘱开立与缴费',
+                    '/labCheck': '检验申请与结果'
                 },
 
 

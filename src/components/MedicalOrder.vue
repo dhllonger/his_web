@@ -422,6 +422,7 @@ export default {
             this.orderToPayCtr.totalTOPay = _.map(orderRows,'orderallprice').reduce((acc, cur) => acc + cur, 0);
             this.orderToPayCtr.underQrcodeText = '需要支付医嘱 '+orderRows.length+'/'+this.orderToPayCtr.orderToPayDataTable.length+' 总计：'+ this.orderToPayCtr.totalTOPay+'元'
             this.orderToPayCtr.payUrl = 'http://172.18.64.140:8080/#/outbillpay?rid='+this.orderToPayCtr.patientVisitInfo.rid+'&selectedOrders='+this.orderToPayCtr.selectedOrder.join(',')
+            console.log(this.orderToPayCtr.payUrl)
         },
         
     },
